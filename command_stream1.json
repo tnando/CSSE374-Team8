@@ -1,1 +1,1 @@
-{"command":{"request_type":"Automated","controller_id":2,"drink_name":"Americano","options":[{"qty":1,"name":"Sugar"},{"qty":2,"name":"Cream"}],"order_id":1,"coffee_macine_id":1}}
+{"command":{"request_type":"Automated","controller_id":2,"drink_name":"Pumpkin Spice","options":[{"qty":1,"name":"Cream"}],"order_id":3,"coffee_macine_id":1}}
