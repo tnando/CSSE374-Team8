@@ -1,0 +1,9 @@
+{
+	"user-response": {
+		"status-message": "Your coffee order has been cancelled.",
+		"error-message": "Out of milk, drink cancelled",
+		"orderID": 2,
+		"coffee_machine_id": 1,
+		"status": 1
+	}
+}

@@ -1,8 +1,6 @@
 {
   "drinkresponse": {
-    "orderID": 3,
-    "status": 1,
-    "errordesc": "Machine jammed.",
-    "errorcode": 26
+    "orderID": 1,
+    "status": 0
   }
 }

@@ -1,13 +1,12 @@
 {
-  "order": { "orderID": 1,
+  "order": { "orderID": 3,
             "address": {
                   "street": "200 N Main",
                   "ZIP": 47803
             },
-            "drink": "Americano",
+            "drink": "Pumpkin Spice",
             "condiments": [
-                {"name": "Sugar", "qty": 1},
-                {"name": "Cream", "qty": 2}
+                {"name": "Cream", "qty": 1}
             ]
             }
 }

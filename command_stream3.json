@@ -1,0 +1,15 @@
+{
+	"command": {
+		"request_type": "Automated",
+		"controller_id": 2,
+		"drink_name": "Pumpkin Spice",
+		"options": [
+			{
+				"qty": 1,
+				"name": "Cream"
+			}
+		],
+		"coffee_machine_id": 2,
+		"order_id": 3
+	}
+}

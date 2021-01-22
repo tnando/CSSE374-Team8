@@ -1,1 +1,8 @@
-{"user-response":{"status-message":"Your coffee order has been cancelled.","error-message":"Machine jammed.","orderID":3,"coffee_macine_id":1,"status":1}}
+{
+	"user-response": {
+		"status-message": "Your coffee has been prepared with your desired options.",
+		"orderID": 1,
+		"coffee_machine_id": 3,
+		"status": 0
+	}
+}
