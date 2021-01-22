@@ -1,0 +1,14 @@
+
+{
+  "order": { "orderID": 1,
+            "address": {
+                  "street": "200 N Main",
+                  "ZIP": 47803
+            },
+            "drink": "Americano",
+            "condiments": [
+                {"name": "Sugar", "qty": 1},
+                {"name": "Cream", "qty": 2}
+            ]
+            }
+}
