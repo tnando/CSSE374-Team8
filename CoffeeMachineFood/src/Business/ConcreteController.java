@@ -39,6 +39,11 @@ public class ConcreteController implements Controller {
 		}
 	}
 	
+	//For testing purposes
+	public void setIsBusy(boolean isBusy) {
+		this.isBusy = isBusy;
+	}
+	
 	public String getID() {
 		return controllerID;
 	}

@@ -22,7 +22,6 @@ public class Main {
 		cps.registerController(simpleController);
 		cps.registerController(advancedController);
 		
-		
 		MobileApp ma = new MobileApp(cps);
 		for(int i = 1; i <= 3; i++) {
 			ma.order(i);

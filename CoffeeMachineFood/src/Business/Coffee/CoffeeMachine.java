@@ -10,10 +10,14 @@ public abstract class CoffeeMachine {
 		this.cb = cb;
 	}
 	
-	public void makeCoffee(String[] condiments) {
-		System.out.println("Making coffee...");
-		System.out.println("Made coffee");
-		cb.addCondiments(condiments);
+	public String makeCoffee(String[] condiments) {
+		String toReturn = "";
+		toReturn += "Making coffee...\n";
+		toReturn += "Made coffee\n";
+		toReturn += cb.addCondiments(condiments);
+		
+		System.out.println(toReturn);
+		return toReturn;
 	}
 	
 }

@@ -2,13 +2,16 @@ package Business.Coffee;
 
 public class CondimentAdd implements CondimentBehavior {
 	
-	public void addCondiments(String[] condiments) {
+	public String addCondiments(String[] condiments) {
+		String toReturn = "";
 		if(condiments.length > 0) {
-			System.out.println("Adding condiments...");
+			toReturn += "Adding condiments...\n";
 			for( int i = 0; i < condiments.length; i++ ){
-				System.out.println("Added " + condiments[i]);
+				toReturn += "Added " + condiments[i] + "\n";
 			}
 		}
+		
+		return toReturn;
 	}
 
 }

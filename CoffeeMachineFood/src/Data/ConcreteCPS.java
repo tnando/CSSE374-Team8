@@ -1,6 +1,5 @@
 package Data;
 
-import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -8,8 +7,6 @@ import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
-
 import Business.Controller;
 
 public class ConcreteCPS implements CPS{
@@ -36,6 +33,11 @@ public class ConcreteCPS implements CPS{
 		return "-1";
 	}
 	
+	//For testing purposes
+	public int getControllersLength() {
+		return this.controllers.size();
+	}
+	
 	public void processOrder(JSONObject jsonOrder, int orderNumber) {
 		JSONObject jsonWrite = new JSONObject();
 		JSONObject command = new JSONObject();
@@ -54,38 +56,44 @@ public class ConcreteCPS implements CPS{
 		Integer coffeeMachineID = null;
 
 		String controller_id = notifyControllers();
-		String coffeeMachine_id = controller_id;
-		orderMap.put(orderNumber, controller_id);
 		
-		command.put("controller_id", controller_id);
-		command.put("coffee_machine_id", coffeeMachine_id);
-		command.put("order_id", orderID);
-		command.put("drink_name", order.get("drink"));
-		if(condiments != null) {
-			command.put("request_type", "Automated");
-			command.put("options", condiments);
+		if(controller_id.compareTo("-1") == 0) {
+			noControllerAvailable(orderNumber);
 		} else {
-			command.put("request_type", "Simple");
-		}
-        
-		jsonWrite.put("command",command);
-       
-		try {
-			FileWriter file;
-			String fileToWrite = "../command_stream" + orderNumber + ".json";
-			file = new FileWriter(fileToWrite);
 		
-			file.write(jsonWrite.toJSONString());
-			file.close();
+			String coffeeMachine_id = controller_id;
+			orderMap.put(orderNumber, controller_id);
 			
-			for(int i = 0; i < controllers.size(); i++) {
-				if(controllers.get(i).getID() == controller_id){
-					controllers.get(i).makeCoffee(condiments, orderNumber);
-					break;
-				}
+			command.put("controller_id", controller_id);
+			command.put("coffee_machine_id", coffeeMachine_id);
+			command.put("order_id", orderID);
+			command.put("drink_name", order.get("drink"));
+			if(condiments != null) {
+				command.put("request_type", "Automated");
+				command.put("options", condiments);
+			} else {
+				command.put("request_type", "Simple");
 			}
-		} catch (IOException e) {
-			e.printStackTrace();
+	        
+			jsonWrite.put("command",command);
+	       
+			try {
+				FileWriter file;
+				String fileToWrite = "../command_stream" + orderNumber + ".json";
+				file = new FileWriter(fileToWrite);
+			
+				file.write(jsonWrite.toJSONString());
+				file.close();
+				
+				for(int i = 0; i < controllers.size(); i++) {
+					if(controllers.get(i).getID() == controller_id){
+						controllers.get(i).makeCoffee(condiments, orderNumber);
+						break;
+					}
+				}
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	
@@ -118,6 +126,29 @@ public class ConcreteCPS implements CPS{
        
 		jsonWrite.put("user-response",appResponse);
        
+		try {
+			FileWriter file;
+			String fileToWrite = "../app_response" + orderNumber + ".json";
+			file = new FileWriter(fileToWrite);
+		
+			file.write(jsonWrite.toJSONString());
+			file.close();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	public void noControllerAvailable(int orderNumber) {
+		JSONObject jsonWrite = new JSONObject();
+		JSONObject appResponse = new JSONObject();
+		
+		appResponse.put("orderID", orderNumber);
+		appResponse.put("status", 1);
+		appResponse.put("status-message", "Your coffee order has been cancelled.");
+		appResponse.put("error-message", "There are no available machines");
+		
+		jsonWrite.put("user-response", appResponse);
+		
 		try {
 			FileWriter file;
 			String fileToWrite = "../app_response" + orderNumber + ".json";
