@@ -1,17 +1,31 @@
+import Business.ConcreteController;
+import Business.Controller;
+import Business.Coffee.AdvancedCoffeeMachine;
+import Business.Coffee.CoffeeMachine;
+import Business.Coffee.SimpleCoffeeMachine;
+import Data.CPS;
+import Data.ConcreteCPS;
+import Presentation.MobileApp;
 
 public class Main {
-
-	private static Controller[] controllers = new Controller[3];
 	
 	public static void main(String[] args) {
 		
-		for(int i = 0; i < 3; i++) {
-			controllers[i] = new Controller();
-		}
-		   
-		for(int i = 0; i < 3; i++) {		   
-			Thread thread = new Thread(new Server(controllers, i+1));
-			thread.start();
+		ConcreteCPS cps = new ConcreteCPS();
+		
+		CoffeeMachine simple = new SimpleCoffeeMachine("1");
+		Controller simpleController = new ConcreteController("1", simple, cps);
+		
+		CoffeeMachine advanced = new AdvancedCoffeeMachine("2");
+		Controller advancedController = new ConcreteController("2", advanced, cps);
+		
+		cps.registerController(simpleController);
+		cps.registerController(advancedController);
+		
+		
+		MobileApp ma = new MobileApp(cps);
+		for(int i = 1; i <= 3; i++) {
+			ma.order(i);
 		}
       
 	}
