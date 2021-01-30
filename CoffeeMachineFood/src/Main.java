@@ -26,6 +26,6 @@ public class Main {
 		for(int i = 1; i <= 3; i++) {
 			ma.order(i);
 		}
-      
+       
 	}
 }
