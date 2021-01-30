@@ -9,6 +9,8 @@ public class TestStrategy {
 	
 	private String[] condiments = {"\"Name\": \"Cream\", \"qty\": 2", "\"Name\": \"Sugar\", \"qty\": 1"};
 	
+	//B1
+	
 	@Test
 	public void testSimpleCoffeeMachine() {
 		SimpleCoffeeMachine simple = new SimpleCoffeeMachine("1");

@@ -9,6 +9,8 @@ import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import Business.Controller;
 
+//B0
+//B2
 public class ConcreteCPS implements CPS{
 	
 	private ArrayList<Controller> controllers = new ArrayList<Controller>();
@@ -38,6 +40,7 @@ public class ConcreteCPS implements CPS{
 		return this.controllers.size();
 	}
 	
+	//D1
 	public void processOrder(JSONObject jsonOrder, int orderNumber) {
 		JSONObject jsonWrite = new JSONObject();
 		JSONObject command = new JSONObject();
@@ -57,6 +60,8 @@ public class ConcreteCPS implements CPS{
 
 		String controller_id = notifyControllers();
 		
+		//D4
+		//C6
 		if(controller_id.compareTo("-1") == 0) {
 			noControllerAvailable(orderNumber);
 		} else {
@@ -78,6 +83,7 @@ public class ConcreteCPS implements CPS{
 			jsonWrite.put("command",command);
 	       
 			try {
+				//D2
 				FileWriter file;
 				String fileToWrite = "../command_stream" + orderNumber + ".json";
 				file = new FileWriter(fileToWrite);
@@ -87,6 +93,7 @@ public class ConcreteCPS implements CPS{
 				
 				for(int i = 0; i < controllers.size(); i++) {
 					if(controllers.get(i).getID() == controller_id){
+						//D3
 						controllers.get(i).makeCoffee(condiments, orderNumber);
 						break;
 					}
@@ -114,6 +121,7 @@ public class ConcreteCPS implements CPS{
 		
 		String coffeeMachine_id = orderMap.get(orderNumber);
 		
+		
 		appResponse.put("orderID", orderID);
 		appResponse.put("coffee_machine_id", coffeeMachine_id);
 		appResponse.put("status", status);
@@ -137,6 +145,7 @@ public class ConcreteCPS implements CPS{
 			e.printStackTrace();
 		}
 	}
+	
 	
 	public void noControllerAvailable(int orderNumber) {
 		JSONObject jsonWrite = new JSONObject();
