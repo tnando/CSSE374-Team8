@@ -33,3 +33,55 @@
     ]
   }
 }
+{
+  "command": {
+    "controller_id": 2,
+    "coffee_machine_id": 1,
+    "orderID": 1,
+    "DrinkName": "Regular Latte",
+    "Requesttype": "Programmable",
+    "Options:": [
+        {"Name": "hazelnut", "qty": 2}
+    ]
+    "Recipe": [
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "top", "object": "whipped cream"}
+    ]
+}
+{
+  "command": {
+    "controller_id": 2,
+    "coffee_machine_id": 1,
+    "orderID": 1,
+    "DrinkName": "Large Latte",
+    "Requesttype": "Programmable",
+    "Options:": [
+        {"Name": "hazelnut", "qty": 4}
+    ]
+    "Recipe": [
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "mix"},
+        {"commandstep": "top", "object": "whipped cream"}
+    ]
+}
+{
+  "command": {
+    "controller_id": 2,
+    "coffee_machine_id": 1,
+    "orderID": 1,
+    "DrinkName": "Pumpkin Spice",
+    "Requesttype": "Programmable",
+    "Options:": [
+        {"Name": "sugar", "qty": 2}
+    ]
+    "Recipe": [
+        {"commandstep": "add", "object": "coffee"},
+        {"commandstep": "add", "object": "pumpkin spice"},
+        {"commandstep": "mix"},
+        {"commandstep": "top", "object": "nutmeg"}
+    ]
+}
