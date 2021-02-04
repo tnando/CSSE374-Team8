@@ -16,6 +16,7 @@ public class MobileApp {
 	}
 	
 	public void order(int orderNumber) {
+		//Where error is occuring
 		JSONParser parser = new JSONParser();
 		JSONObject jsonRead = null;
 		try {
