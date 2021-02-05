@@ -7,7 +7,7 @@ import java.io.FileReader;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
-import Business.Coffee.CoffeeMachine;
+import Business.Coffee.Machine.CoffeeMachine;
 import Data.ConcreteCPS;
 
 public class ConcreteController implements Controller {
@@ -24,10 +24,11 @@ public class ConcreteController implements Controller {
 		this.cps = cps;
 	}
 	
-	public void makeCoffee(String[] condiments, int orderNumber) {
+	public void makeCoffee(String condiments, int orderNumber) {
 		isBusy = true;
 		this.orderNumber = orderNumber;
-		cm.makeCoffee(condiments);
+		String[] condimentsArray = condiments.split("\\{,\\}");
+		cm.makeCoffee(condimentsArray);
 		isBusy = false;
 		controllerResponse();
 	}

@@ -1,4 +1,4 @@
-package Business.Coffee;
+package Business.Coffee.Condiment;
 
 //B0
 public interface CondimentBehavior {

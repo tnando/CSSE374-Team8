@@ -6,8 +6,8 @@ import org.junit.Test;
 
 import Business.ConcreteController;
 import Business.Controller;
-import Business.Coffee.CoffeeMachine;
-import Business.Coffee.SimpleCoffeeMachine;
+import Business.Coffee.Machine.CoffeeMachine;
+import Business.Coffee.Machine.SimpleCoffeeMachine;
 import Data.ConcreteCPS;
 
 public class TestObserver {

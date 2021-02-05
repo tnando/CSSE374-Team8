@@ -1,4 +1,6 @@
-package Business.Coffee;
+package Business.Coffee.Machine;
+
+import Business.Coffee.Condiment.CondimentNone;
 
 public class SimpleCoffeeMachine extends CoffeeMachine {
 

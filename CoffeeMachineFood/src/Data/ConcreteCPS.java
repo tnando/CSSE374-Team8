@@ -3,11 +3,13 @@ package Data;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import Business.Controller;
+import Business.Coffee.DrinkFactory;
 
 //B0
 //B2
@@ -49,19 +51,17 @@ public class ConcreteCPS implements CPS{
 		
 		JSONObject order = (JSONObject)jsonOrder.get("order");
 		JSONArray condimentJSON = (JSONArray)order.get("condiments");
-		String condimentString = null;
-		String[] condiments;
-		if(condimentJSON != null) {
+		String condimentString;
+		if (condimentJSON != null) {
 			condimentString = condimentJSON.toString();
-			condiments = condimentString.substring(2,condimentString.length()-2).split("\\},\\{");
 		} else {
-			condiments = new String[0];
+			condimentString = "";
 		}
-		
+				
 		//adding the address
 		JSONObject address = (JSONObject) order.get("address");
 		String road = address.get("street").toString(); 
-		String zip =address.get("ZIP").toString();
+		String zip = address.get("ZIP").toString();
 		System.out.println("road " + road + "ZIP " + zip); 
 		
 		
@@ -83,9 +83,16 @@ public class ConcreteCPS implements CPS{
 			command.put("coffee_machine_id", coffeeMachine_id);
 			command.put("order_id", orderID);
 			command.put("drink_name", order.get("drink"));
-			if(condiments != null) {
+			
+			DrinkFactory df = new DrinkFactory();
+			String ingredients = df.createDrink(order.get("drink").toString());
+			
+			command.put("ingredients", ingredients);
+			System.out.println(ingredients);
+			
+			if(condimentString != null) {
 				command.put("request_type", "Automated");
-				command.put("options", condiments);
+				command.put("options", condimentString);
 			} else {
 				command.put("request_type", "Simple");
 			}
@@ -104,7 +111,7 @@ public class ConcreteCPS implements CPS{
 				for(int i = 0; i < controllers.size(); i++) {
 					if(controllers.get(i).getID() == controller_id){
 						//D3
-						controllers.get(i).makeCoffee(condiments, orderNumber);
+						controllers.get(i).makeCoffee(condimentString, orderNumber);
 						break;
 					}
 				}

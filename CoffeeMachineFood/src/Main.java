@@ -1,8 +1,8 @@
 import Business.ConcreteController;
 import Business.Controller;
-import Business.Coffee.AdvancedCoffeeMachine;
-import Business.Coffee.CoffeeMachine;
-import Business.Coffee.SimpleCoffeeMachine;
+import Business.Coffee.Machine.AdvancedCoffeeMachine;
+import Business.Coffee.Machine.CoffeeMachine;
+import Business.Coffee.Machine.SimpleCoffeeMachine;
 import Data.CPS;
 import Data.ConcreteCPS;
 import Presentation.MobileApp;

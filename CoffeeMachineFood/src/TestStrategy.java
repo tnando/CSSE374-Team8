@@ -1,9 +1,9 @@
-import Business.Coffee.AdvancedCoffeeMachine;
-import Business.Coffee.SimpleCoffeeMachine;
-
 import static org.junit.Assert.*;
 
 import org.junit.Test;
+
+import Business.Coffee.Machine.AdvancedCoffeeMachine;
+import Business.Coffee.Machine.SimpleCoffeeMachine;
 
 public class TestStrategy {
 	
