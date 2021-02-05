@@ -42,6 +42,8 @@ public class ConcreteCPS implements CPS{
 	
 	//D1
 	public void processOrder(JSONObject jsonOrder, int orderNumber) {
+		
+		System.out.println("Parsing the order:");
 		JSONObject jsonWrite = new JSONObject();
 		JSONObject command = new JSONObject();
 		
@@ -55,6 +57,14 @@ public class ConcreteCPS implements CPS{
 		} else {
 			condiments = new String[0];
 		}
+		
+		//adding the address
+		JSONObject address = (JSONObject) order.get("address");
+		String road = address.get("street").toString(); 
+		String zip =address.get("ZIP").toString();
+		System.out.println("road " + road + "ZIP " + zip); 
+		
+		
 		Integer orderID =  Integer.parseInt(order.get("orderID").toString());
 		Integer coffeeMachineID = null;
 
@@ -105,6 +115,7 @@ public class ConcreteCPS implements CPS{
 	}
 	
 	public void processControllerResponse(JSONObject jsonRead, int orderNumber) {
+		System.out.println("Parsing the process control ");
 		JSONObject jsonWrite = new JSONObject();
 		JSONObject appResponse = new JSONObject();
 		
