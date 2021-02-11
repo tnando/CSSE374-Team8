@@ -1,7 +1,9 @@
 package Presentation;
 
+import java.io.File;
 import java.io.FileReader;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -13,6 +15,8 @@ public class MobileApp {
 	
 	public MobileApp(ConcreteCPS cps) {
 		this.cps = cps;
+		System.out.println("Reading recipe in contrstor");
+		readRecipe();
 	}
 	
 	public void order(int orderNumber) {
@@ -27,5 +31,20 @@ public class MobileApp {
 		}
 	   
 		cps.processOrder(jsonRead, orderNumber);
+	}
+	
+	public void readRecipe() {
+		System.out.println("Reading the recipe");
+		JSONParser parser = new JSONParser();
+		JSONArray jsonRead = null;
+		try {
+			String fileToRead = "recipe-input.json";
+			Object obj = parser.parse(new FileReader(fileToRead));
+			jsonRead = (JSONArray)obj;
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	   
+		cps.processRecipe(jsonRead);
 	}
 }
