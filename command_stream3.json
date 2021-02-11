@@ -1,1 +1,11 @@
-{"command":{"request_type":"Automated","controller_id":"1","drink_name":"Pumpkin Spice","options":"[{\"qty\":1,\"name\":\"Cream\"}]","ingredients":"Coffee, Cream, Pumpkin Spice, Nutmeg, Whipped Cream","coffee_machine_id":"1","order_id":3}}
+{
+	"command": {
+		"request_type": "Automated",
+		"controller_id": "1",
+		"drink_name": "Pumpkin Spice",
+		"options": "[{\"qty\":1,\"name\":\"Cream\"}]",
+		"ingredients": "Coffee, Cream, Pumpkin Spice, Nutmeg, Whipped Cream",
+		"coffee_machine_id": "1",
+		"order_id": 3
+	}
+}
