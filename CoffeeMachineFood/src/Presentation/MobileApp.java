@@ -1,7 +1,9 @@
 package Presentation;
 
+import java.io.File;
 import java.io.FileReader;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
@@ -34,11 +36,11 @@ public class MobileApp {
 	public void readRecipe() {
 		System.out.println("Reading the recipe");
 		JSONParser parser = new JSONParser();
-		JSONObject jsonRead = null;
+		JSONArray jsonRead = null;
 		try {
-			String fileToRead = "../recipe-input.json";
-			Object obj = parser.parse(new FileReader("../maggot.json"));
-			jsonRead = (JSONObject)obj;
+			String fileToRead = "recipe-input.json";
+			Object obj = parser.parse(new FileReader(fileToRead));
+			jsonRead = (JSONArray)obj;
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

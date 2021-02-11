@@ -10,7 +10,10 @@ import java.util.Iterator;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import Business.Controller;
+import Business.Coffee.CommandStep;
 import Business.Coffee.DrinkFactory;
+import Business.Coffee.Recipe;
+import Business.Coffee.Ingredients.Ingredient;
 
 //B0
 //B2
@@ -18,6 +21,7 @@ public class ConcreteCPS implements CPS{
 	
 	private ArrayList<Controller> controllers = new ArrayList<Controller>();
 	private HashMap<Integer, String> orderMap = new HashMap<>();
+	private ArrayList<Recipe> recipeMap = new ArrayList<Recipe>();
 
 	public void registerController(Controller o) {
 		controllers.add(o);		
@@ -189,22 +193,47 @@ public class ConcreteCPS implements CPS{
 		}
 	}
 	
-	public void processRecipe(JSONObject jsonRead) {
+	public void processRecipe(JSONArray jsonRead) {
 		//System.out.println("Parsing the order:");
 		System.out.println("Parsing recipe");
 		JSONObject jsonWrite = new JSONObject();
 		JSONObject command = new JSONObject();
-		
-		JSONObject receipe = (JSONObject)jsonRead.get("Recipe");
-		JSONArray ingredientJSON = (JSONArray)jsonRead.get("Steps");
-		
-		Iterator<String> iterator = ingredientJSON.iterator(); 
-		while(iterator.hasNext()) {
-			System.out.println(iterator.next());
+		int iterator = 0;
+		ArrayList<JSONObject> recipes = new ArrayList<JSONObject>();
+		ArrayList<JSONObject> individualRecipes = new ArrayList<JSONObject>(); 
+		ArrayList<JSONArray> individualSteps = new ArrayList<JSONArray>(); 
+		while(!jsonRead.isEmpty()){
+			recipes.add((JSONObject)jsonRead.get(iterator));
+			jsonRead.remove(iterator);
 		}
-		//adding the address
 		
+		ArrayList<CommandStep> cs = new ArrayList<CommandStep>();
+		JSONArray temp;
+		
+		for(JSONObject obj: recipes) {
+			temp = (JSONArray)obj.get("Steps");
+			while(!temp.isEmpty()){
+				//recipes.add((JSONObject)jsonRead.get(iterator));
+				//jsonRead.remove(iterator);
+				JSONObject ingredient = (JSONObject)((JSONObject)temp.get(0)).get("object");
+				//change this
+				Ingredient ing = null;
+				if (ingredient == null) {
+					//it's null haha
+				}
+				else{ 
+					//check via switch statement
+					//figure out instantiation
+					//Ingredient ing = ingInstantiate(ingredient.toString());
+				}
+				cs.add(new CommandStep((((JSONObject)temp.get(0)).get("commandstep")).toString(), ing));
+			}
+		}
 		
 	}
+	
+	//public Ingredient ingInstantiate(String ing){
+	//	switch statement
+	//}
 
 }
