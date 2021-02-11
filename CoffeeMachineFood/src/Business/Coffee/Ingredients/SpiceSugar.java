@@ -1,5 +1,5 @@
 package Business.Coffee.Ingredients;
 
-public class SpiceSugar implements Spice {
+public class SpiceSugar implements Spice, Ingredient {
 
 }
