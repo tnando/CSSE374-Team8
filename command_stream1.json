@@ -1,1 +1,1 @@
-{"command":{"request_type":"Automated","controller_id":"1","drink_name":"Americano","options":"[{\"qty\":1,\"name\":\"Sugar\"},{\"qty\":2,\"name\":\"Cream\"}]","ingredients":"Coffee, ","coffee_machine_id":"1","order_id":1}}
+{"Recipe":null,"command":{"request_type":"Automated","controller_id":"1","drink_name":"Americano","options":[{"qty":1,"name":"Sugar"},{"qty":2,"name":"Cream"}],"ingredients":"Coffee, ","coffee_machine_id":"1","order_id":1}}

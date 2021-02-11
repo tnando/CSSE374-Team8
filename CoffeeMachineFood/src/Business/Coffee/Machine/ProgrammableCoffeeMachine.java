@@ -1,9 +1,9 @@
-package Business.Coffee;
+package Business.Coffee.Machine;
 
+import Business.Coffee.Recipe;
 import Business.Coffee.Condiment.CondimentBehavior;
-import Business.Coffee.Machine.CoffeeMachine;
 
-public class ProgrammableCoffeeMachine  extends CoffeeMachine{
+public class ProgrammableCoffeeMachine extends CoffeeMachine{
 
 	Recipe recipe; 
 	public ProgrammableCoffeeMachine(String id, CondimentBehavior cb, Recipe recipe) {

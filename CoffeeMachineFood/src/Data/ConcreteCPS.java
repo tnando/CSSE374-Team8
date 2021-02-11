@@ -1,5 +1,6 @@
 package Data;
 
+import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -7,8 +8,9 @@ import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
+import org.json.simple.*;
+import org.json.simple.parser.JSONParser;
+
 import Business.Controller;
 import Business.Coffee.CommandStep;
 import Business.Coffee.DrinkFactory;
@@ -56,13 +58,7 @@ public class ConcreteCPS implements CPS{
 		
 		JSONObject order = (JSONObject)jsonOrder.get("order");
 		JSONArray condimentJSON = (JSONArray)order.get("condiments");
-		String condimentString;
-		if (condimentJSON != null) {
-			condimentString = condimentJSON.toString();
-		} else {
-			condimentString = "";
-		}
-				
+						
 		//adding the address
 		JSONObject address = (JSONObject) order.get("address");
 		String road = address.get("street").toString(); 
@@ -95,12 +91,15 @@ public class ConcreteCPS implements CPS{
 			command.put("ingredients", ingredients);
 			System.out.println(ingredients);
 			
-			if(condimentString != null) {
+			if(condimentJSON != null) {
 				command.put("request_type", "Automated");
-				command.put("options", condimentString);
 			} else {
 				command.put("request_type", "Simple");
 			}
+			
+			command.put("options", condimentJSON);
+
+			jsonWrite.put("Recipe",getRecipe(order.get("drink").toString()));
 	        
 			jsonWrite.put("command",command);
 	       
@@ -116,7 +115,11 @@ public class ConcreteCPS implements CPS{
 				for(int i = 0; i < controllers.size(); i++) {
 					if(controllers.get(i).getID() == controller_id){
 						//D3
-						controllers.get(i).makeCoffee(condimentString, orderNumber);
+						if(condimentJSON != null) {
+							controllers.get(i).makeCoffee(condimentJSON.toString(), orderNumber);
+						} else {
+							controllers.get(i).makeCoffee("", orderNumber);
+						}
 						break;
 					}
 				}
@@ -193,49 +196,79 @@ public class ConcreteCPS implements CPS{
 		}
 	}
 	
-	public void processRecipe(JSONArray jsonRead) {
-		//System.out.println("Parsing the order:");
-		System.out.println("Parsing recipe");
-		JSONObject jsonWrite = new JSONObject();
-		JSONObject command = new JSONObject();
-		int iterator = 0;
-		ArrayList<JSONObject> recipes = new ArrayList<JSONObject>();
-		ArrayList<JSONObject> individualRecipes = new ArrayList<JSONObject>(); 
-		ArrayList<JSONArray> individualSteps = new ArrayList<JSONArray>(); 
-		while(!jsonRead.isEmpty()){
-			recipes.add((JSONObject)jsonRead.get(iterator));
-			jsonRead.remove(iterator);
+	public JSONArray getRecipe(String drinkName) {
+		System.out.println("Reading the recipe");
+		JSONParser parser = new JSONParser();
+		JSONArray jsonRead = null;
+		JSONArray toReturn = null;
+		try {
+			String fileToRead = "recipe-input.json";
+			Object obj = parser.parse(new FileReader(fileToRead));
+			jsonRead = (JSONArray)obj;
+			
+			toReturn = processRecipe(jsonRead, drinkName);
+		} catch(Exception e) {
+			e.printStackTrace();
 		}
 		
-		ArrayList<CommandStep> cs = new ArrayList<CommandStep>();
-		JSONArray temp;
-//		JSONObject arg = ((JSONObject)recipes.get(0).get("Recipe"));
-//		System.out.println(arg.get("DrinkName"));
-		
-		for(JSONObject obj: recipes) {
-			temp = (JSONArray)((JSONObject)obj.get("Recipe")).get("Steps");
-			while(!temp.isEmpty()){
-				//recipes.add((JSONObject)jsonRead.get(iterator));
-				//jsonRead.remove(iterator);
-				String ingredient = (String)((JSONObject)temp.get(0)).get("object");
-				//change this
-				Ingredient ing = null;
-				if (ingredient == null) {
-					//it's null haha
-				}
-				else{ 
-					//check via switch statement
-					//figure out instantiation
-					//Ingredient ing = ingInstantiate(ingredient);
-				}
-				cs.add(new CommandStep((((JSONObject)temp.get(0)).get("commandstep")).toString(), ing));
+		return toReturn;
+	}
+	
+	public JSONArray processRecipe(JSONArray recipes, String drinkName) {
+		System.out.println("Parsing recipe");
+		JSONArray toReturn = null;
+				
+		for(int i = 0; i < recipes.size(); i++) {
+			if(((JSONObject)((JSONObject)recipes.get(i)).get("Recipe")).get("DrinkName").equals(drinkName)) {
+				toReturn = (JSONArray)((JSONObject)((JSONObject)recipes.get(0)).get("Recipe")).get("Steps");
+				System.out.println(toReturn);
+				return toReturn;
 			}
 		}
 		
+		return toReturn;
+		
+		
+//		JSONObject jsonWrite = new JSONObject();
+//		JSONObject command = new JSONObject();
+//		int iterator = 0;
+//		ArrayList<JSONObject> recipes = new ArrayList<JSONObject>();
+//		ArrayList<JSONObject> individualRecipes = new ArrayList<JSONObject>(); 
+//		ArrayList<JSONArray> individualSteps = new ArrayList<JSONArray>(); 
+//		while(!jsonRead.isEmpty()){
+//			recipes.add((JSONObject)jsonRead.get(iterator));
+//			jsonRead.remove(iterator);
+//		}
+//		
+//		ArrayList<CommandStep> cs = new ArrayList<CommandStep>();
+//		JSONArray temp;
+////		JSONObject arg = ((JSONObject)recipes.get(0).get("Recipe"));
+////		System.out.println(arg.get("DrinkName"));
+//		
+//		for(JSONObject obj: recipes) {
+//			temp = (JSONArray)((JSONObject)obj.get("Recipe")).get("Steps");
+//			while(!temp.isEmpty()){
+//				//recipes.add((JSONObject)jsonRead.get(iterator));
+//				//jsonRead.remove(iterator);
+//				String ingredient = (String)((JSONObject)temp.get(0)).get("object");
+//				//change this
+//				Ingredient ing = null;
+//				if (ingredient == null) {
+//					//it's null haha
+//				}
+//				else{ 
+//					//check via switch statement
+//					//figure out instantiation
+//					//Ingredient ing = ingInstantiate(ingredient);
+//				}
+//				cs.add(new CommandStep((((JSONObject)temp.get(0)).get("commandstep")).toString(), ing));
+//			}
+//		}
+//		
 	}
-	
-	//public Ingredient ingInstantiate(String ing){
-	//	switch statement
-	//}
+//	
+//	//public Ingredient ingInstantiate(String ing){
+//	//	switch statement
+//	//}
 
 }
