@@ -1,13 +1,15 @@
 package Business.Coffee;
 
+import java.util.ArrayList;
+
 import Business.Coffee.Ingredients.Ingredient;
 
 public class Recipe {
-	public Ingredient ingredient; 
-	public String command; 
+	public ArrayList<CommandStep> commandSteps; 
 	public String drinkname; 
-	public Recipe(String drinkname, String command, Ingredient ingredient) {
-		this.command =command; 
-		this.ingredient = ingredient; 
+	public Recipe(String drinkname, ArrayList<CommandStep> list) {
+		this.drinkname=drinkname; 
+		this.commandSteps = list; 
+		
 	}
 }

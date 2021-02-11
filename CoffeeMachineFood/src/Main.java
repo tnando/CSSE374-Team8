@@ -20,6 +20,7 @@ public class Main {
 		CoffeeMachine advanced = new AdvancedCoffeeMachine("2");
 		Controller advancedController = new ConcreteController("2", advanced, cps);
 		
+		
 		cps.registerController(simpleController);
 		cps.registerController(advancedController);
 		

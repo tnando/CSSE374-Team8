@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.HashMap;
+import java.util.Iterator;
 
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
@@ -186,6 +187,24 @@ public class ConcreteCPS implements CPS{
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	public void processRecipe(JSONObject jsonRead) {
+		//System.out.println("Parsing the order:");
+		System.out.println("Parsing recipe");
+		JSONObject jsonWrite = new JSONObject();
+		JSONObject command = new JSONObject();
+		
+		JSONObject receipe = (JSONObject)jsonRead.get("Recipe");
+		JSONArray ingredientJSON = (JSONArray)jsonRead.get("Steps");
+		
+		Iterator<String> iterator = ingredientJSON.iterator(); 
+		while(iterator.hasNext()) {
+			System.out.println(iterator.next());
+		}
+		//adding the address
+		
+		
 	}
 
 }
