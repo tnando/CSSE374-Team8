@@ -209,13 +209,15 @@ public class ConcreteCPS implements CPS{
 		
 		ArrayList<CommandStep> cs = new ArrayList<CommandStep>();
 		JSONArray temp;
+//		JSONObject arg = ((JSONObject)recipes.get(0).get("Recipe"));
+//		System.out.println(arg.get("DrinkName"));
 		
 		for(JSONObject obj: recipes) {
-			temp = (JSONArray)obj.get("Steps");
+			temp = (JSONArray)((JSONObject)obj.get("Recipe")).get("Steps");
 			while(!temp.isEmpty()){
 				//recipes.add((JSONObject)jsonRead.get(iterator));
 				//jsonRead.remove(iterator);
-				JSONObject ingredient = (JSONObject)((JSONObject)temp.get(0)).get("object");
+				String ingredient = (String)((JSONObject)temp.get(0)).get("object");
 				//change this
 				Ingredient ing = null;
 				if (ingredient == null) {
@@ -224,7 +226,7 @@ public class ConcreteCPS implements CPS{
 				else{ 
 					//check via switch statement
 					//figure out instantiation
-					//Ingredient ing = ingInstantiate(ingredient.toString());
+					//Ingredient ing = ingInstantiate(ingredient);
 				}
 				cs.add(new CommandStep((((JSONObject)temp.get(0)).get("commandstep")).toString(), ing));
 			}
