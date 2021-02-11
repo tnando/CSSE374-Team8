@@ -1,0 +1,36 @@
+{  "Recipe":{ 
+		"DrinkName": "Large Latte" ,
+		"Steps":[
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "mix"},
+        {"commandstep": "top", "object": "whipped cream"}]
+		
+    } 
+    
+ }
+ {  "Recipe":{ 
+		"DrinkName": "Pumpkin Spice" ,
+		"Steps": [
+        {"commandstep": "add", "object": "coffee"},
+        {"commandstep": "add", "object": "pumpkin spice"},
+        {"commandstep": "mix"},
+        {"commandstep": "top", "object": "nutmeg"}
+    ]
+		
+    } 
+    
+ }
+ {  "Recipe":{ 
+		"DrinkName": "Regular Latte" ,
+		"Steps": [
+        {"commandstep": "steam", "object": "milk"},
+        {"commandstep": "add", "object": "expresso"},
+        {"commandstep": "top", "object": "whipped cream"}
+    ]
+    } 
+    
+ }
+ 
