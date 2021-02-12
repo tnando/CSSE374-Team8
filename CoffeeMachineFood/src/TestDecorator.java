@@ -42,6 +42,8 @@ public class TestDecorator {
 		
 		assertEquals(ingredients, "Coffee, Sugar, Sugar, Cream, Hazelnut");
 		
+		
+		//null check
 		ingredients = cm.makeCoffee(drink, null).getIngredients();
 		
 		assertEquals(ingredients, "Coffee");
