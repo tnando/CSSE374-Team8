@@ -3,7 +3,7 @@ package Business.Coffee.Ingredients;
 import Business.Coffee.Condiment.CondimentDecorator;
 import Business.Coffee.Drink.IDrink;
 
-public class SpiceHazelnut extends CondimentDecorator  implements Spice {
+public class SpiceHazelnut extends CondimentDecorator implements Spice {
 	IDrink drink;
 	
 	public SpiceHazelnut (IDrink drink) {
