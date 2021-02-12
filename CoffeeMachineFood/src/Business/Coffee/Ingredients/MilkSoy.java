@@ -1,5 +1,5 @@
 package Business.Coffee.Ingredients;
 
-public class MilkSoy implements Milk, Ingredient {
+public class MilkSoy implements Milk {
 
 }

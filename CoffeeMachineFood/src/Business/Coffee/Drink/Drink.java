@@ -2,30 +2,34 @@ package Business.Coffee.Drink;
 
 import Business.Coffee.Ingredients.*;
 
-public abstract class Drink {
+public abstract class Drink implements IDrink {
 	
 	public String createDrink() {
 		String ingredients = "";
 		String coffee = createCoffee();
 		if(!(coffee.equals(""))){
 			ingredients += coffee;
-			ingredients += ", ";
 		}
 		String milk = createMilk();
 		if(!(milk.equals(""))){
-			ingredients += milk;
 			ingredients += ", ";
+			ingredients += milk;
 		}
 		String spice = createSpice();
 		if(!(spice.equals(""))){
-			ingredients += spice;
 			ingredients += ", ";
+			ingredients += spice;
 		}
 		String topping = createTopping();
 		if(!(topping.equals(""))){
+			ingredients += ", ";
 			ingredients += topping;
 		}
 		return ingredients;
+	}
+	
+	public String getIngredients() {
+		return this.createDrink();
 	}
 	
 	abstract String createCoffee();

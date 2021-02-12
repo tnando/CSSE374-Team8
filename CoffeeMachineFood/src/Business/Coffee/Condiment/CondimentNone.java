@@ -1,18 +1,11 @@
 package Business.Coffee.Condiment;
 
+import org.json.simple.JSONArray;
+
 //B0
-public class CondimentNone implements CondimentBehavior {
+public class CondimentNone extends CondimentBehavior {
 	
-	public String addCondiments(String[] condiments) {
-		String toReturn = "";
-		if(condiments.length > 0){
-			toReturn += "Condiments must be added by the barista.\n";
-			toReturn += "Condiments to Add: \n";
-			for(int i = 0; i < condiments.length; i++) {
-				toReturn += "   - " + condiments[i] + "\n";
-			}
-		}
-		
-		return toReturn;
+	public String whoAdded() {
+		return "Barista";
 	}
 }

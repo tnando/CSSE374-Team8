@@ -1,6 +1,10 @@
 package Business.Coffee.Machine;
 
+import org.json.simple.JSONArray;
+
 import Business.Coffee.Condiment.CondimentBehavior;
+import Business.Coffee.Drink.Drink;
+import Business.Coffee.Drink.IDrink;
 
 public abstract class CoffeeMachine {
 	
@@ -12,14 +16,12 @@ public abstract class CoffeeMachine {
 		this.cb = cb;
 	}
 	
-	public String makeCoffee(String[] condiments) {
-		String toReturn = "";
-		toReturn += "Making coffee...\n";
-		toReturn += "Made coffee\n";
-		toReturn += cb.addCondiments(condiments);
-		
-		System.out.println(toReturn);
-		return toReturn;
+	public IDrink makeCoffee(IDrink drink, JSONArray condiments) {
+		return cb.addCondiments(drink, condiments);
+	}
+	
+	public CondimentBehavior getCondimentBehavior() {
+		return this.cb;
 	}
 	
 }

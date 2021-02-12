@@ -3,19 +3,19 @@ package Business.Coffee;
 import Business.Coffee.Drink.*;
 
 public class DrinkFactory {
-	public String createDrink(String type) {
+	public Drink createDrink(String type) {
 		if (type.contains("Americano")) {
-			return (new Americano()).createDrink();
+			return new Americano();
 		} else if (type.contains("Latte")) {
-			return (new Latte()).createDrink();
+			return new Latte();
 		} else if (type.contains("Decaf")) {
-			return (new Decaf()).createDrink();
+			return new Decaf();
 		} else if (type.contains("Espresso")) {
-			return (new Espresso()).createDrink();
+			return new Espresso();
 		} else if (type.contains("Colombia Dark")) {
-			return (new ColombiaDark()).createDrink();
+			return new ColombiaDark();
 		} else if (type.contains("Pumpkin Spice")) {
-			return (new PumpkinSpice()).createDrink();
+			return new PumpkinSpice();
 		} else {
 			return null;
 		}

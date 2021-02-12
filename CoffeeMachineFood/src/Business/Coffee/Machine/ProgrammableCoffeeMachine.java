@@ -1,19 +1,20 @@
 package Business.Coffee.Machine;
 
-import Business.Coffee.Recipe;
+import org.json.simple.JSONArray;
+
 import Business.Coffee.Condiment.CondimentBehavior;
+import Business.Coffee.Drink.Drink;
+import Business.Coffee.Drink.IDrink;
 
 public class ProgrammableCoffeeMachine extends CoffeeMachine{
 
-	Recipe recipe; 
-	public ProgrammableCoffeeMachine(String id, CondimentBehavior cb, Recipe recipe) {
+	public ProgrammableCoffeeMachine(String id, CondimentBehavior cb) {
 		super(id, cb);
-		this.recipe = recipe; 
 		
 	}
 	
 	@Override 
-	public String makeCoffee(String[] condiments) {
+	public IDrink makeCoffee(IDrink drink, JSONArray condiments) {
 		return null;
 		
 	}

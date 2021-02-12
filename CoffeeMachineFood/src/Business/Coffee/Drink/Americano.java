@@ -7,7 +7,7 @@ import Business.Coffee.Ingredients.Spice;
 import Business.Coffee.Ingredients.Topping;
 
 public class Americano extends Drink{
-
+	
 	String createCoffee() {
 		return (new CoffeeCaffeine()).toString();
 	}

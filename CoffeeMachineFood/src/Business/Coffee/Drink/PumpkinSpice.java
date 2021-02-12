@@ -13,7 +13,7 @@ public class PumpkinSpice extends Drink {
 	}
 
 	String createMilk() {
-		return (new Cream()).toString();
+		return (new Cream(this)).toString();
 	}
 
 	String createSpice() {

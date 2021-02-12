@@ -1,6 +1,6 @@
 package Business.Coffee.Ingredients;
 
-public class MilkRegular implements Milk, Ingredient {
+public class MilkRegular implements Milk {
 	
 	public String toString() {
 		return "Milk";

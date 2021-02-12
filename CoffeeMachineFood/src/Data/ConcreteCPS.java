@@ -12,10 +12,8 @@ import org.json.simple.*;
 import org.json.simple.parser.JSONParser;
 
 import Business.Controller;
-import Business.Coffee.CommandStep;
 import Business.Coffee.DrinkFactory;
-import Business.Coffee.Recipe;
-import Business.Coffee.Ingredients.Ingredient;
+import Business.Coffee.Drink.Drink;
 
 //B0
 //B2
@@ -23,7 +21,6 @@ public class ConcreteCPS implements CPS{
 	
 	private ArrayList<Controller> controllers = new ArrayList<Controller>();
 	private HashMap<Integer, String> orderMap = new HashMap<>();
-	private ArrayList<Recipe> recipeMap = new ArrayList<Recipe>();
 
 	public void registerController(Controller o) {
 		controllers.add(o);		
@@ -86,10 +83,10 @@ public class ConcreteCPS implements CPS{
 			command.put("drink_name", order.get("drink"));
 			
 			DrinkFactory df = new DrinkFactory();
-			String ingredients = df.createDrink(order.get("drink").toString());
+			Drink drink = df.createDrink(order.get("drink").toString());
+			String ingredients = drink.createDrink();
 			
 			command.put("ingredients", ingredients);
-			System.out.println(ingredients);
 			
 			if(condimentJSON != null) {
 				command.put("request_type", "Automated");
@@ -115,11 +112,7 @@ public class ConcreteCPS implements CPS{
 				for(int i = 0; i < controllers.size(); i++) {
 					if(controllers.get(i).getID() == controller_id){
 						//D3
-						if(condimentJSON != null) {
-							controllers.get(i).makeCoffee(condimentJSON.toString(), orderNumber);
-						} else {
-							controllers.get(i).makeCoffee("", orderNumber);
-						}
+						controllers.get(i).makeCoffee(drink, condimentJSON, orderNumber);
 						break;
 					}
 				}

@@ -2,11 +2,13 @@ package Business;
 
 import java.io.FileReader;
 
+import org.json.simple.JSONArray;
 //B0
 //B2
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 
+import Business.Coffee.Drink.Drink;
 import Business.Coffee.Machine.CoffeeMachine;
 import Data.ConcreteCPS;
 
@@ -24,11 +26,10 @@ public class ConcreteController implements Controller {
 		this.cps = cps;
 	}
 	
-	public void makeCoffee(String condiments, int orderNumber) {
+	public void makeCoffee(Drink drink, JSONArray condiments, int orderNumber) {
 		isBusy = true;
 		this.orderNumber = orderNumber;
-		String[] condimentsArray = condiments.split("\\{,\\}");
-		cm.makeCoffee(condimentsArray);
+		System.out.println(cm.makeCoffee(drink, condiments).getIngredients());
 		isBusy = false;
 		controllerResponse();
 	}
