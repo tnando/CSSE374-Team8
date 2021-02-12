@@ -5,7 +5,6 @@ import org.json.simple.JSONObject;
 
 import Business.Coffee.Drink.Drink;
 
-//B0
 public class CondimentAdd extends CondimentBehavior {
 	
 	public String whoAdded() {

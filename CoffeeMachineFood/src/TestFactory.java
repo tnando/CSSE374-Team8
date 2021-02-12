@@ -13,6 +13,7 @@ import Business.Coffee.Machine.CoffeeMachine;
 import Business.Coffee.Machine.SimpleCoffeeMachine;
 import Data.ConcreteCPS;
 
+//A1
 public class TestFactory {
 	
 	DrinkFactory df; 

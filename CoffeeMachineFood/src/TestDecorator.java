@@ -10,6 +10,7 @@ import Business.Coffee.Drink.IDrink;
 import Business.Coffee.Machine.CoffeeMachine;
 import Business.Coffee.Machine.SimpleCoffeeMachine;
 
+//B1
 public class TestDecorator {
 	
 	DrinkFactory df;

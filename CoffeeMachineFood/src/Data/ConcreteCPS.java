@@ -15,8 +15,6 @@ import Business.Controller;
 import Business.Coffee.DrinkFactory;
 import Business.Coffee.Drink.Drink;
 
-//B0
-//B2
 public class ConcreteCPS implements CPS{
 	
 	private ArrayList<Controller> controllers = new ArrayList<Controller>();
@@ -46,7 +44,6 @@ public class ConcreteCPS implements CPS{
 		return this.controllers.size();
 	}
 	
-	//D1
 	public void processOrder(JSONObject jsonOrder, int orderNumber) {
 		
 		System.out.println("Parsing the order:");
@@ -68,8 +65,6 @@ public class ConcreteCPS implements CPS{
 
 		String controller_id = notifyControllers();
 		
-		//D4
-		//C6
 		if(controller_id.compareTo("-1") == 0) {
 			noControllerAvailable(orderNumber);
 		} else {

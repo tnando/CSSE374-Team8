@@ -9,7 +9,6 @@ import Business.Coffee.Ingredients.Cream;
 import Business.Coffee.Ingredients.SpiceHazelnut;
 import Business.Coffee.Ingredients.SpiceSugar;
 
-//B0
 public abstract class CondimentBehavior {
 	public IDrink addCondiments(IDrink drink, JSONArray condiments) {
 		if(condiments != null) {

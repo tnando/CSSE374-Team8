@@ -10,7 +10,6 @@ import Business.Coffee.Machine.SimpleCoffeeMachine;
 
 public class TestStrategy {
 
-	//B1
 	@Test
 	public void testSimpleCoffeeMachine() {
 		SimpleCoffeeMachine simple = new SimpleCoffeeMachine("1");

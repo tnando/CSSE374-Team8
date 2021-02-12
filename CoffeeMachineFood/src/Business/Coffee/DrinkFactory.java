@@ -2,6 +2,7 @@ package Business.Coffee;
 
 import Business.Coffee.Drink.*;
 
+//A1
 public class DrinkFactory {
 	public Drink createDrink(String type) {
 		if (type.contains("Americano")) {

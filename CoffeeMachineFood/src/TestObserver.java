@@ -12,7 +12,6 @@ import Data.ConcreteCPS;
 
 public class TestObserver {
 	
-	//B3
 	@Test
 	public void testRegisterAndRemove() {
 		ConcreteCPS cps = new ConcreteCPS();

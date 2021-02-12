@@ -4,7 +4,6 @@ import org.json.simple.JSONObject;
 
 import Business.Controller;
 
-//B0
 public interface CPS {
 	
 	public void registerController(Controller o);
