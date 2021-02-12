@@ -42,6 +42,11 @@ public class TestDecorator {
 		
 		assertEquals(ingredients, "Coffee, Sugar, Sugar, Cream, Hazelnut");
 		
+		ingredients = cm.makeCoffee(drink, null).getIngredients();
+		
+		assertEquals(ingredients, "Coffee");
+
+		
 		drink = df.createDrink("Latte");
 		ingredients = cm.makeCoffee(drink, this.condiments).getIngredients();
 		

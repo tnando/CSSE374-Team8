@@ -220,48 +220,5 @@ public class ConcreteCPS implements CPS{
 		}
 		
 		return toReturn;
-		
-		
-//		JSONObject jsonWrite = new JSONObject();
-//		JSONObject command = new JSONObject();
-//		int iterator = 0;
-//		ArrayList<JSONObject> recipes = new ArrayList<JSONObject>();
-//		ArrayList<JSONObject> individualRecipes = new ArrayList<JSONObject>(); 
-//		ArrayList<JSONArray> individualSteps = new ArrayList<JSONArray>(); 
-//		while(!jsonRead.isEmpty()){
-//			recipes.add((JSONObject)jsonRead.get(iterator));
-//			jsonRead.remove(iterator);
-//		}
-//		
-//		ArrayList<CommandStep> cs = new ArrayList<CommandStep>();
-//		JSONArray temp;
-////		JSONObject arg = ((JSONObject)recipes.get(0).get("Recipe"));
-////		System.out.println(arg.get("DrinkName"));
-//		
-//		for(JSONObject obj: recipes) {
-//			temp = (JSONArray)((JSONObject)obj.get("Recipe")).get("Steps");
-//			while(!temp.isEmpty()){
-//				//recipes.add((JSONObject)jsonRead.get(iterator));
-//				//jsonRead.remove(iterator);
-//				String ingredient = (String)((JSONObject)temp.get(0)).get("object");
-//				//change this
-//				Ingredient ing = null;
-//				if (ingredient == null) {
-//					//it's null haha
-//				}
-//				else{ 
-//					//check via switch statement
-//					//figure out instantiation
-//					//Ingredient ing = ingInstantiate(ingredient);
-//				}
-//				cs.add(new CommandStep((((JSONObject)temp.get(0)).get("commandstep")).toString(), ing));
-//			}
-//		}
-//		
 	}
-//	
-//	//public Ingredient ingInstantiate(String ing){
-//	//	switch statement
-//	//}
-
 }
